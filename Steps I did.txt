@@ -1,0 +1,42 @@
+
+
+
+1) Install server stuff
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu
+
+	sudo apt-get install apache2
+	sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql
+	sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
+2) clone repo to place
+
+	cd /var/www/html/
+	sudo git clone https://github.com/Epic-Breakfast-Productions/opensourcepos.git
+
+3) Create database for things to go in
+
+	mysql -u root -p
+	
+	$ CREATE DATABASE <db name>
+
+4) Do the 'Local Install section on the git hub page:
+https://github.com/Epic-Breakfast-Productions/opensourcepos
+
+	mysql -u root -p	
+	$ source <sql file to run>
+
+5) Other things:
+
+	sudo apt-get install php5-gd	
+	sudo apt-get install php5-intl
+
+-Edit the public/.htaccess to have the right sub directory in the server root
+-Edit /etc/apache2/apache2.conf:
+
+	<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+	</Directory>
+
+	sudo a2enmod rewrite
